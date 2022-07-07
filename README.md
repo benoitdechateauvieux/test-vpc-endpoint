@@ -1,14 +1,10 @@
 # Test VPC Endpoint
 
-This is a blank project for CDK development with TypeScript.
+Source = https://thecodinginterface.com/blog/aws-vpc-endpoints-with-cdk/
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+## Test VPC Endpoint
+1. SSH to public EC2 instance as bastion
+2. SSH to private EC2 instance
+3. Run `aws sts get-caller-identity` --> Should NOT work
+4. Run `aws --region us-east-1 sts get-caller-identity --endpoint-url https://sts.us-east-1.amazonaws.com` --> Should work
+5. Check the metrics of the VPC Endpoint
